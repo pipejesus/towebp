@@ -1,25 +1,26 @@
 package main
 
 import (
-	"fmt"
+	"strconv"
 	"towebp/lib"
 )
 
 func main() {
 	imagesList, count, err := lib.NewImagesList(".").Scan()
 	if err != nil {
-		fmt.Println("Error scanning directory:", err)
+		lib.LogError("LogError scanning directory: " + err.Error())
 	}
 
-	fmt.Println("Found", count, "images")
+	lib.LogInfo("Found: " + strconv.Itoa(count) + " images")
 
 	for _, inputPath := range imagesList {
 		conversion := lib.NewConversion(inputPath, 80, false)
 		outputPath, err := conversion.ToWebp()
 		if err != nil {
-			fmt.Println("Error converting file:", err)
+			lib.LogConversionError(inputPath, err.Error())
 			continue
 		}
-		fmt.Println("Converted", inputPath, "to", outputPath)
+
+		lib.LogConverted(inputPath, outputPath)
 	}
 }
