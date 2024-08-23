@@ -1,4 +1,4 @@
-module awesomeProject
+module towebp
 
 go 1.21
 
