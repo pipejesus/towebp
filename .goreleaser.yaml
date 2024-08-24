@@ -23,10 +23,11 @@ builds:
       - arm64
 
 brews:
-    # This is an example formulae, you should change this to match your project.
     -
       name: towebp
-
+    - repository:
+        name: pipejesus/homebrew-pipejesus
+        owner: pipejesus
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.
