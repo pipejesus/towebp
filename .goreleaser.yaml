@@ -23,11 +23,9 @@ builds:
       - arm64
 
 brews:
-  - name: towebp
-    homepage: https://github.com/pipejesus/homebrew-pipejesus
-  - repository:
-      name: pipejesus/homebrew-pipejesus
-      owner: pipejesus
+    # This is an example formulae, you should change this to match your project.
+    -
+      name: towebp
 
 archives:
   - format: tar.gz
