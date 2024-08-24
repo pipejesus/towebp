@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"runtime"
 	"strconv"
 	"sync"
@@ -20,11 +21,15 @@ func scheduleConversion(wg *sync.WaitGroup, inputPath string, quality float32, l
 }
 
 func main() {
+	quality := flag.Float64("quality", 80, "quality of the webp image")
+	lossless := flag.Bool("lossless", false, "lossless conversion")
+	flag.Parse()
+
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	imagesList, count, err := lib.NewImagesList(".").Scan()
 	if err != nil {
-		lib.LogError("LogError scanning directory: " + err.Error())
+		lib.LogError("Error scanning directory: " + err.Error())
 	}
 
 	lib.LogInfo("Found: " + strconv.Itoa(count) + " images")
@@ -33,7 +38,7 @@ func main() {
 
 	for _, inputPath := range imagesList {
 		wg.Add(1)
-		go scheduleConversion(&wg, inputPath, 80, false)
+		go scheduleConversion(&wg, inputPath, float32(*quality), *lossless)
 	}
 
 	wg.Wait()
