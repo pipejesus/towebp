@@ -6,3 +6,12 @@ Usage:
 ```
 towebp
 ```
+
+Available options:
+
+```
+towebp -h
+
+-quality (1-100)
+-lossless (true/false)
+```
