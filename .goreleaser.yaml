@@ -25,7 +25,7 @@ builds:
 brews:
     -
       name: towebp
-    - repository:
+      repository:
         name: pipejesus/homebrew-pipejesus
         owner: pipejesus
 archives:
