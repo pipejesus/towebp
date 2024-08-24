@@ -25,8 +25,9 @@ builds:
 brews:
     -
       name: towebp
+      homepage: https://github.com/pipejesus/homebrew-pipejesus
       repository:
-        name: pipejesus/homebrew-pipejesus
+        name: homebrew-pipejesus
         owner: pipejesus
 archives:
   - format: tar.gz
